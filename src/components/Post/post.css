@@ -1,0 +1,4 @@
+.action__icon:hover {
+  filter: brightness(0%);
+  cursor: pointer;
+}
