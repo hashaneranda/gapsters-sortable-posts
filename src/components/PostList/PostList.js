@@ -64,7 +64,7 @@ const PostList = ({ className = "" }) => {
 
   return (
     <div data-testid="post-list" className={`container mx-auto ${className}`}>
-      <h1 className="text-2xl leading-loose">Sortable Post List</h1>
+      <h1 className="text-4xl leading-loose text-white ">Sortable Post List</h1>
 
       {postList.data &&
         transitions.map(({ item, props: { y, ...rest }, key }, index) => (
