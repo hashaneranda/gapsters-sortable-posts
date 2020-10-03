@@ -14,7 +14,7 @@ import { useTransition, animated } from "react-spring";
 import ActionItem from "components/ActionItem/ActionItem";
 
 //redux actions
-import { timeTravelToAction } from "features/posts/postSlice";
+import { timeTravelToAction, setTimeTraveling } from "features/posts/postSlice";
 
 const AnimatedActionItem = animated(ActionItem);
 
@@ -35,12 +35,16 @@ const ActionList = ({ className = "" }) => {
   );
 
   const handleTimeTravel = (action) => {
+    dispatch(setTimeTraveling());
+
     const index = actionStack.findIndex((x) => x.action === action);
 
     const postOrder = actionStack[index].order;
     const newArr = [...actionStack].slice(0, index);
 
-    dispatch(timeTravelToAction({ actionStack: newArr, postOrder }));
+    setTimeout(function () {
+      dispatch(timeTravelToAction({ actionStack: newArr, postOrder }));
+    }, 500);
   };
 
   return (

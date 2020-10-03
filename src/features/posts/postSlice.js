@@ -5,6 +5,7 @@ export const initialState = {
     loading: false,
     data: [],
     error: null,
+    timeTraveling: false,
   },
   actionStack: [],
 };
@@ -74,13 +75,24 @@ const createdSlice = createSlice({
         actionStack: [...state.actionStack, payload],
       };
     },
+    setTimeTraveling(state, { payload }) {
+      return {
+        ...state,
+        postList: {
+          ...state.postList,
+          timeTraveling: true,
+        },
+      };
+    },
     timeTravelToAction(state, { payload }) {
       return {
         ...state,
+
         actionStack: payload.actionStack,
         postList: {
           ...state.postList,
           data: payload.postOrder,
+          timeTraveling: false,
         },
       };
     },
@@ -96,6 +108,7 @@ export const {
   moveUpPost,
   moveDownPost,
   addToActionStack,
+  setTimeTraveling,
   timeTravelToAction,
 } = actions;
 

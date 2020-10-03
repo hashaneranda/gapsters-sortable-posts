@@ -1,9 +1,18 @@
+/**
+ * Author : Hashan Eranda Jayalath
+ * Copyrights: Hashan Eranda Jayalath
+ * Version: 1.0.0
+ * Description: Post List Componenet
+ * Date: 03-10-2020
+ */
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTransition, animated } from "react-spring";
 
 //compoenents
 import Post from "components/Post/Post";
+import { TimeTravelLoader } from "components/Loader/Loader";
 
 //redux actions
 import {
@@ -66,7 +75,12 @@ const PostList = ({ className = "" }) => {
     <div data-testid="post-list" className={`container mx-auto ${className}`}>
       <h1 className="text-4xl leading-loose text-white ">Sortable Post List</h1>
 
-      {postList.data &&
+      {postList.timeTraveling ? (
+        <div className="flex items-center justify-center w-full min-h-full h-150">
+          <TimeTravelLoader />
+        </div>
+      ) : (
+        postList.data &&
         transitions.map(({ item, props: { y, ...rest }, key }, index) => (
           <AnimatedPost
             key={key}
@@ -80,7 +94,8 @@ const PostList = ({ className = "" }) => {
               ...rest,
             }}
           />
-        ))}
+        ))
+      )}
     </div>
   );
 };
