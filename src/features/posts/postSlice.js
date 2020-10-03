@@ -1,29 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-/**
- * Swap the elements in an array at indexes x and y.
- *
- * @param (a) The array.
- * @param (x) The index of the first element to swap.
- * @param (y) The index of the second element to swap.
- * @return {Array} The input array with the elements swapped.
- */
-const swapArrayElements = (a, x, y) => {
-  console.log("initial array --", a, x);
-  if (a.length === 1) return a;
-  a.splice(y, 1, a.splice(x, 1, a[y])[0]);
-
-  console.log("new array --", a);
-  return a;
-};
-
 export const initialState = {
   postList: {
     loading: false,
-    data: null,
+    data: [],
     error: null,
   },
-  sortArray: [],
+  actionStack: [],
 };
 
 const createdSlice = createSlice({
@@ -85,6 +68,22 @@ const createdSlice = createSlice({
         },
       };
     },
+    addToActionStack(state, { payload }) {
+      return {
+        ...state,
+        actionStack: [...state.actionStack, payload],
+      };
+    },
+    timeTravelToAction(state, { payload }) {
+      return {
+        ...state,
+        actionStack: payload.actionStack,
+        postList: {
+          ...state.postList,
+          data: payload.postOrder,
+        },
+      };
+    },
   },
 });
 
@@ -96,6 +95,8 @@ export const {
   fetchPostError,
   moveUpPost,
   moveDownPost,
+  addToActionStack,
+  timeTravelToAction,
 } = actions;
 
 export default reducer;

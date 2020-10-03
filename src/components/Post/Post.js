@@ -22,7 +22,7 @@ const Post = ({
   buttonDown = () => {},
 }) => {
   return (
-    <div className="flex flex-row items-center max-w-md p-6 mx-auto my-3 transition duration-500 ease-in-out transform bg-white rounded-lg shadow-xl hover:scale-110">
+    <div className="flex flex-row items-center max-w-md p-6 my-3 transition duration-500 ease-in-out transform bg-white rounded-lg shadow-xl hover:scale-110">
       <h1
         className="flex-grow text-xl leading-tight text-gray-900"
         data-testid="title"
