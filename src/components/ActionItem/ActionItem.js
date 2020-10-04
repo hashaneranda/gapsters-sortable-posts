@@ -16,6 +16,7 @@ const ActionItem = ({ title = "", handleTimeTravel = () => {} }) => {
       <button
         className="p-2 ml-3 text-white transition duration-500 ease-in-out transform bg-green-400 rounded hover:bg-green-600 hover:-translate-y-1 hover:scale-110"
         onClick={() => handleTimeTravel()}
+        data-testid="button"
       >
         Time travel
       </button>

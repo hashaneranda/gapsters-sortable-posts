@@ -8,7 +8,6 @@
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useTransition, animated } from "react-spring";
 
 //compoenents
 import Post from "components/Post/Post";
@@ -25,23 +24,9 @@ import {
 //utils
 import { swapArrayElements } from "./utils/ArrayHelpers";
 
-const AnimatedPost = animated(Post);
-
 const PostList = ({ className = "" }) => {
   const dispatch = useDispatch();
   const postList = useSelector((state) => state.posts.postList);
-
-  const height = 120;
-  const transitions = useTransition(
-    postList.data.map((data, i) => ({ ...data, y: i * height })),
-    (d) => d.id,
-    {
-      from: { position: "absolute", opacity: 0 },
-      leave: { height: 0, opacity: 0 },
-      enter: ({ y }) => ({ y, opacity: 1 }),
-      update: ({ y }) => ({ y }),
-    }
-  );
 
   useEffect(() => {
     dispatch(fetchPost());
@@ -60,14 +45,14 @@ const PostList = ({ className = "" }) => {
       const newList = swapArrayElements([...postList.data], id - 1, id);
       const action = `Moved post ${postId} from index ${id} to index ${id - 1}`;
 
-      dispatch(moveUpPost(newList));
       dispatch(addToActionStack({ action, order: postList.data }));
+      dispatch(moveUpPost(newList));
     } else if (action === "down") {
       const newList = swapArrayElements([...postList.data], id, id + 1);
       const action = `Moved post ${postId} from index ${id} to index ${id + 1}`;
 
-      dispatch(moveDownPost(newList));
       dispatch(addToActionStack({ action, order: postList.data }));
+      dispatch(moveDownPost(newList));
     }
   };
 
@@ -81,18 +66,14 @@ const PostList = ({ className = "" }) => {
         </div>
       ) : (
         postList.data &&
-        transitions.map(({ item, props: { y, ...rest }, key }, index) => (
-          <AnimatedPost
-            key={key}
+        postList.data.map((item, index) => (
+          <Post
+            key={item.id}
             id={item.id}
             isStart={index === 0}
             isEnd={index === postList.data.length - 1}
             buttonUp={() => handleButtonClick(index, "up", item.id)}
             buttonDown={() => handleButtonClick(index, "down", item.id)}
-            style={{
-              transform: y.interpolate((y) => `translate3d(0,${y}px,0)`),
-              ...rest,
-            }}
           />
         ))
       )}

@@ -52,7 +52,6 @@ const createdSlice = createSlice({
         postList: {
           ...state.postList,
           loading: false,
-
           data: payload,
           error: null,
         },
@@ -87,7 +86,6 @@ const createdSlice = createSlice({
     timeTravelToAction(state, { payload }) {
       return {
         ...state,
-
         actionStack: payload.actionStack,
         postList: {
           ...state.postList,
