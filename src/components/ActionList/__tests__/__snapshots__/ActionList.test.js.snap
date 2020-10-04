@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionList Componenet should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col max-w-full min-w-full mx-auto bg-gray-200  rounded-lg shadow-xl "
+  >
+    <div
+      class="p-5 bg-white"
+    >
+      <h1
+        class="flex-grow text-xl leading-tight text-gray-900"
+        data-testid="title"
+      >
+        List of Actions commited
+      </h1>
+    </div>
+    <div
+      class="p-2 pb-1 mt-3"
+    />
+  </div>
+</DocumentFragment>
+`;

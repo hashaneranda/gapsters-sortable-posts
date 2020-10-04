@@ -7,7 +7,7 @@ import { render, cleanup, fireEvent } from "@testing-library/react";
 
 import { initialState } from "features/posts/postSlice";
 import posts from "features/posts/postSlice";
-import PostList from "../PostList";
+import ActionList from "../ActionList";
 
 const renderWithRedux = (
   component,
@@ -29,14 +29,14 @@ const renderWithRedux = (
 
 afterEach(cleanup);
 
-describe("PostList Componenet", () => {
+describe("ActionList Componenet", () => {
   it("should take a snapshot", () => {
-    const { asFragment } = renderWithRedux(<PostList />);
-    expect(asFragment(<PostList />)).toMatchSnapshot();
+    const { asFragment } = renderWithRedux(<ActionList />);
+    expect(asFragment(<ActionList />)).toMatchSnapshot();
   });
 
   it("renders componenet corretly without passing argumenets", () => {
-    const { getByTestId } = renderWithRedux(<PostList />);
-    expect(getByTestId("post-list")).toBeInTheDocument();
+    const { getByTestId } = renderWithRedux(<ActionList />);
+    expect(getByTestId("title")).toBeInTheDocument();
   });
 });
