@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# gapsters-sortable-posts
 
-## Available Scripts
+## What's inside
 
-In the project directory, you can run:
+- [redux-toolkit](https://github.com/reduxjs/redux-toolkit) (state management)
+- [tailwindcss](https://github.com/tailwindlabs/tailwindcss) (CSS framework)
+- [Axios](https://github.com/mzabriskie/axios) (a library for XMLHttpRequests)
+- [Redux Saga](https://github.com/redux-saga/redux-saga/) (a redux middleware to handle data fetching)
+- [react lottie](https://github.com/chenqingspring/react-lottie) (For rendering lottie animations)
 
-### `yarn start`
+For testing:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Facebook/Jest](https://facebook.github.io/jest/)
+- [Testing-library/React](https://testing-library.com/docs/react-testing-library/intro)
+- [Jest-dom](https://github.com/testing-library/jest-dom) (Custom jest matchers to test the state of the DOM)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Getting Started
 
-### `yarn test`
+### Installation
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone the repo:
 
-### `yarn build`
+```bash
+git clone https://github.com/hashaneranda/gapsters-sortable-posts
+cd gapsters-sortable-posts
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install the dependencies:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```bash
+yarn install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Commands
 
-### `yarn eject`
+Running locally:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Building the app for production:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+yarn build
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Testing:
 
-## Learn More
+```bash
+# run all tests
+yarn test
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Note: this project is based on [Create React App](https://github.com/facebook/create-react-app).
 
-### Code Splitting
+## Project Structure
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+src\
+ |--app\            # Application main layout and functions
+ |--assets\         # Assets
+ |--components\     # Compoenents
+ |--config\         # Configrations of the app (Constants, Images links)
+ |--features\       # App features (React slices, saga, watchers etc)
+ |--services\       # Services for API calls and functions
+ |--utils\          # Utilities and helper functions
+ |--main.js         # vue app - app entry point
+```
