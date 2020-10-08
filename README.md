@@ -1,4 +1,4 @@
-# gapsters-sortable-posts
+# sortable-posts
 
 ## What's inside
 
