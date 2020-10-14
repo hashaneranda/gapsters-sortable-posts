@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ActionItem from "components/ActionItem/ActionItem";
 
 //redux actions
-import { timeTravelToAction, setTimeTraveling } from "features/posts/postSlice";
+import { timeTravelToAction, setTimeTraveling } from "store/actions/postAction";
 
 const ActionList = ({ className = "" }) => {
   const dispatch = useDispatch();

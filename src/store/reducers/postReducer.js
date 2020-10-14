@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import * as types from "store/ActionTypes";
 
+//initail state of post reducer
 export const initialState = {
   postList: {
     loading: false,
@@ -10,17 +11,16 @@ export const initialState = {
   actionStack: [],
 };
 
-const createdSlice = createSlice({
-  name: "posts",
-  initialState,
-  reducers: {
-    fetchPost(state, { payload }) {
+export default function (state = initialState, action) {
+  let response = action.response;
+
+  switch (action.type) {
+    case types.FETCH_POSTS:
       return {
         ...state,
         postList: { ...state.postList, loading: true },
       };
-    },
-    fetchPostSuccess(state, { response }) {
+    case types.FETCH_POSTS_SUCCESS:
       return {
         ...state,
         postList: {
@@ -30,8 +30,7 @@ const createdSlice = createSlice({
           error: null,
         },
       };
-    },
-    fetchPostError(state, { response }) {
+    case types.FETCH_POSTS_ERROR:
       return {
         ...state,
         postList: {
@@ -45,36 +44,32 @@ const createdSlice = createSlice({
             : null,
         },
       };
-    },
-    moveUpPost(state, { payload }) {
+    case types.MOVE_UP_POST:
       return {
         ...state,
         postList: {
           ...state.postList,
           loading: false,
-          data: payload,
+          data: response,
           error: null,
         },
       };
-    },
-    moveDownPost(state, { payload }) {
+    case types.MOVE_DOWN_POST:
       return {
         ...state,
         postList: {
           ...state.postList,
           loading: false,
-          data: payload,
+          data: response,
           error: null,
         },
       };
-    },
-    addToActionStack(state, { payload }) {
+    case types.ADD_TO_ACTION_STACK:
       return {
         ...state,
-        actionStack: [...state.actionStack, payload],
+        actionStack: [...state.actionStack, response],
       };
-    },
-    setTimeTraveling(state, { payload }) {
+    case types.SET_TIME_TRAVELING:
       return {
         ...state,
         postList: {
@@ -82,32 +77,17 @@ const createdSlice = createSlice({
           timeTraveling: true,
         },
       };
-    },
-    timeTravelToAction(state, { payload }) {
+    case types.TIME_TRAVEL_TO_ACTION:
       return {
         ...state,
-        actionStack: payload.actionStack,
+        actionStack: response.actionStack,
         postList: {
           ...state.postList,
-          data: payload.postOrder,
+          data: response.postOrder,
           timeTraveling: false,
         },
       };
-    },
-  },
-});
-
-const { actions, reducer } = createdSlice;
-
-export const {
-  fetchPost,
-  fetchPostSuccess,
-  fetchPostError,
-  moveUpPost,
-  moveDownPost,
-  addToActionStack,
-  setTimeTraveling,
-  timeTravelToAction,
-} = actions;
-
-export default reducer;
+    default:
+      return state;
+  }
+}

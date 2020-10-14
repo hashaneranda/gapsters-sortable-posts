@@ -19,7 +19,7 @@ import {
   moveUpPost,
   moveDownPost,
   addToActionStack,
-} from "features/posts/postSlice";
+} from "store/actions/postAction";
 
 //utils
 import { swapArrayElements } from "./utils/ArrayHelpers";

@@ -5,8 +5,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 
-import { initialState } from "features/posts/postSlice";
-import posts from "features/posts/postSlice";
+import { initialState } from "store/reducers/postReducer";
+import posts from "store/reducers/postReducer";
 import PostList from "../PostList";
 
 const renderWithRedux = (

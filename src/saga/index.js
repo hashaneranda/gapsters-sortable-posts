@@ -1,8 +1,8 @@
 import { fork } from "redux-saga/effects";
 
 //watchers
-import postWatchers from "features/posts/postWatchers";
+import watchers from "./watchers";
 
 export default function* startforman() {
-  yield fork(postWatchers);
+  yield fork(watchers);
 }

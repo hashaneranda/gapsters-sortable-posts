@@ -3,8 +3,8 @@ import { put, call } from "redux-saga/effects";
 //services
 import * as service from "services/posts";
 
-//actions
-import * as actions from "./postSlice";
+//redux actions
+import * as types from "store/ActionTypes";
 
 export function* fetchPostList({ payload }) {
   let response = null;
@@ -14,13 +14,13 @@ export function* fetchPostList({ payload }) {
 
     if (response && response.status === 200) {
       yield put({
-        type: actions.fetchPostSuccess.type,
+        type: types.FETCH_POSTS_SUCCESS,
         response,
       });
     } else {
-      yield put({ type: actions.fetchPostError.type, response });
+      yield put({ type: types.FETCH_POSTS_ERROR, response });
     }
   } catch (err) {
-    yield put({ type: actions.fetchPostError.type, response });
+    yield put({ type: types.FETCH_POSTS_ERROR, response });
   }
 }

@@ -8,7 +8,7 @@ import App from "app/App";
 import * as serviceWorker from "./serviceWorker";
 
 //redux
-import configureStore from "./app/store";
+import configureStore from "./store/store";
 
 //store
 const store = configureStore();

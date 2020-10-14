@@ -2,7 +2,7 @@
 
 ## What's inside
 
-- [redux-toolkit](https://github.com/reduxjs/redux-toolkit) (state management)
+- [redux](https://github.com/reduxjs/redux) (state management)
 - [tailwindcss](https://github.com/tailwindlabs/tailwindcss) (CSS framework)
 - [Axios](https://github.com/mzabriskie/axios) (a library for XMLHttpRequests)
 - [Redux Saga](https://github.com/redux-saga/redux-saga/) (a redux middleware to handle data fetching)
