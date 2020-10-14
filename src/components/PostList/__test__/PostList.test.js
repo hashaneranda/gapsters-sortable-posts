@@ -3,7 +3,7 @@ import React from "react";
 import configureStore from "store/store";
 
 import { Provider } from "react-redux";
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 
 import { initialState } from "store/reducers/postReducer";
 import posts from "store/reducers/postReducer";

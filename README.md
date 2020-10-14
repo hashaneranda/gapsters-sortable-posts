@@ -58,12 +58,13 @@ Note: this project is based on [Create React App](https://github.com/facebook/cr
 
 ```
 src\
- |--app\            # Application main layout and functions
+ |--app\            # Application main layout
  |--assets\         # Assets
  |--components\     # Compoenents
  |--config\         # Configrations of the app (Constants, Images links)
- |--features\       # App features (React slices, saga, watchers etc)
+ |--saga\           # Sagas , watchers and rootSaga
  |--services\       # Services for API calls and functions
+ |--store\          # Redux store, reducers and actions
  |--utils\          # Utilities and helper functions
- |--main.js         # vue app - app entry point
+ |--index.js        # react app - app entry point
 ```
