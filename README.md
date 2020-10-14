@@ -6,7 +6,6 @@
 - [tailwindcss](https://github.com/tailwindlabs/tailwindcss) (CSS framework)
 - [Axios](https://github.com/mzabriskie/axios) (a library for XMLHttpRequests)
 - [Redux Saga](https://github.com/redux-saga/redux-saga/) (a redux middleware to handle data fetching)
-- [react lottie](https://github.com/chenqingspring/react-lottie) (For rendering lottie animations)
 
 For testing:
 

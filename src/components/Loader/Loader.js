@@ -7,33 +7,9 @@
  */
 
 import React from "react";
-import Lottie from "react-lottie";
 
-//assets
-import { timeClock } from "config/Lottie";
+import "./loader.css";
 
-const lottieConfig = (file, loop = true) => {
-  return {
-    loop,
-    autoplay: true,
-    animationData: file,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-};
-
-export const TimeTravelLoader = ({
-  height = 165,
-  width = 151,
-  infinite = true,
-}) => {
-  return (
-    <Lottie
-      options={lottieConfig(timeClock, infinite)}
-      height={height}
-      width={width}
-      className="noReports"
-    />
-  );
+export const TimeTravelLoader = ({}) => {
+  return <div class="lds-hourglass"></div>;
 };
