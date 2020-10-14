@@ -50,30 +50,46 @@ describe("Post Componenet", () => {
     expect(getByTestId("title")).toHaveTextContent("Post 3");
   });
 
-  it("Both up button and down button function calls working on button click", () => {
-    let testValUp = false;
-    let testValDown = false;
+  it("both up button and down button function calls working correctly on button click", () => {
+    let testValUp = null;
+    let testValDown = null;
 
-    const testFunctionUp = () => {
-      testValUp = true;
+    const testFunctionUp = (id) => {
+      testValUp = id;
     };
 
-    const testFunctionDown = () => {
-      testValDown = true;
+    const testFunctionDown = (id) => {
+      testValDown = id;
     };
 
     const { getByTestId } = render(
       <Post id="3" buttonUp={testFunctionUp} buttonDown={testFunctionDown} />
     );
 
-    fireEvent.click(getByTestId("button-up"));
-    fireEvent.click(getByTestId("button-down"));
-
     expect(getByTestId("button-up")).toBeInTheDocument();
     expect(getByTestId("button-down")).toBeInTheDocument();
     expect(getByTestId("title")).toHaveTextContent("Post 3");
 
-    expect(testValUp).toEqual(true);
-    expect(testValDown).toEqual(true);
+    fireEvent.click(getByTestId("button-up"));
+    fireEvent.click(getByTestId("button-down"));
+
+    expect(testValUp).toEqual("3");
+    expect(testValDown).toEqual("3");
+  });
+
+  it("renders only the down arrow if it's the first post", () => {
+    const renderResult = render(<Post id="2" isStart={true} />);
+
+    expect(renderResult.queryByTestId("button-up")).toEqual(null);
+    expect(renderResult.getByTestId("button-down")).toBeInTheDocument();
+    expect(renderResult.getByTestId("title")).toHaveTextContent("Post 2");
+  });
+
+  it("renders only the up arrow if it's the last post", () => {
+    const renderResult = render(<Post id="2" isEnd={true} />);
+
+    expect(renderResult.queryByTestId("button-down")).toEqual(null);
+    expect(renderResult.getByTestId("button-up")).toBeInTheDocument();
+    expect(renderResult.getByTestId("title")).toHaveTextContent("Post 2");
   });
 });

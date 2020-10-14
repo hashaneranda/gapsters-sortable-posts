@@ -40,7 +40,7 @@ describe("ActionItem Componenet", () => {
     expect(getByTestId("title")).toHaveTextContent("test title");
   });
 
-  it("function call working on button click", () => {
+  it("function call working correctly on button click", () => {
     let testVal = false;
 
     const testFunction = () => {
