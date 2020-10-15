@@ -10,6 +10,6 @@ import React from "react";
 
 import "./loader.css";
 
-export const TimeTravelLoader = ({}) => {
+export const TimeTravelLoader = () => {
   return <div class="lds-hourglass"></div>;
 };
